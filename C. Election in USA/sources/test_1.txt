@@ -1,0 +1,3 @@
+McCain 10
+McCain 5
+Obama 9
