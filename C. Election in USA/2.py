@@ -2,18 +2,15 @@ f = open('input.txt')
 results = f.readlines()
 f.close()
 
-people = []
-votes = []
+people, votes = [], []
 
 for result in results:
-    result = result.strip()
-    person = result.split(' ')[0]
-    vote = int(result.split(' ')[1])
-
-    if person in people:
+    result = result.strip().split()
+    person, vote = result[0], result[1]
+    try:
         idx = people.index(person)
         votes[idx] += vote
-    else:
+    except ValueError:
         people.append(person)
         votes.append(vote)
 
