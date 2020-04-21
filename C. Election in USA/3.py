@@ -6,7 +6,6 @@ with open('input.txt') as f:
     lines = f.readlines()
 
 candidates, results = [], []
-
 for line in lines:
     candidate, votes = line.strip().split(' ')
     votes = int(votes)

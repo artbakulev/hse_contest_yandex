@@ -1,12 +1,13 @@
 f = open('input.txt')
 results = f.readlines()
 f.close()
+# n = int(input())
+
 
 people, votes = [], []
-
 for result in results:
-    result = result.strip().split()
-    person, vote = result[0], result[1]
+    result = result.strip().split(' ')
+    person, vote = result[0], int(result[1])
     try:
         idx = people.index(person)
         votes[idx] += vote
