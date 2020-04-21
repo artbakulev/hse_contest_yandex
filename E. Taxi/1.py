@@ -1,13 +1,8 @@
-kms = input().split(' ')
-prices = input().split(' ')
-
-for i in range(len(kms)):
-    kms[i] = int(kms[i])
-    prices[i] = int(prices[i])
+kms = map(int, input().split(' '))
+prices = map(int, input().split(' '))
 
 kms = sorted(kms)
-prices = sorted(prices)
-prices = prices[::-1]
+prices = sorted(prices, reverse=True)
 
 price = 0
 for i in range(len(kms)):
