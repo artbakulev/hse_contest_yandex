@@ -12,7 +12,7 @@ for word in words:
     if word in dictionary:
         continue
 
-    if word in small_dictionary:
+    if word.lower() in small_dictionary:
         errors += 1
         continue
 
