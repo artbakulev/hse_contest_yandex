@@ -4,13 +4,19 @@ def upper_count(s):
 
 
 n = int(input())
-lines = {input() for i in range(n)}
-linesLower = {line.lower() for line in lines}
+accents = {}
+for i in range(n):
+    word = input()
+    base_form = word.lower()
+    if base_form not in accents:
+        accents[base_form] = set()
+    accents[base_form].add(word)
 
-words, number_of_errors = input().split(' '), 0
-
-for word in words:
-    count = upper_count(word)
-    if (word not in lines and word.lower() in linesLower) or count != 1:
-        number_of_errors += 1
-print(number_of_errors)
+errors = 0
+sentence = input().split()
+for word in sentence:
+    base_form = word.lower()
+    if (base_form in accents and word not in accents[base_form]
+            or upper_count(word) != 1):
+        errors += 1
+print(errors)

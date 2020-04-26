@@ -1,17 +1,25 @@
-dictionary = {input() for i in range(int(input()))}
-dictionary_lower = {word.lower() for word in dictionary}
-s = input().split(' ')
+def count_ups(s):
+    total = 0
+    for i in s:
+        if i.isupper():
+            total += 1
+    return total
+
+
+n = int(input())
+udareniya = {}
+for i in range(n):
+    word = input()
+    word_lower = word.lower()
+    if word_lower not in udareniya:
+        udareniya[word_lower] = set()
+    udareniya[word_lower].add(word)
 
 errors = 0
-for word in s:
-    if word not in dictionary:
-        if word.lower() in dictionary_lower:
-            errors += 1
-        else:
-            uppers = 0
-            for char in word:
-                if char.isupper():
-                    uppers += 1
-            if uppers != 1:
-                errors += 1
+sentence = input().split()
+for word in sentence:
+    word_lower = word.lower()
+    if (word_lower in udareniya and word not in udareniya[word_lower]
+            or count_ups(word) != 1):
+        errors += 1
 print(errors)

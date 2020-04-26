@@ -1,26 +1,24 @@
-n = int(input())
+n, accents = int(input()), dict()
 
-lines = []
-lines_small = []
-for i in range(n):
-    word = input()
-    lines.append(word)
-    lines_small.append(word.lower())
+for _ in range(n):
+    word = input();
+    low = word.lower()
+    if low not in accents:
+        accents[low] = set()
+    accents[low].add(word)
 
-s = input()
-words = s.split(' ')
-errors = 0
-for word in words:
-    if word not in lines:
-        if word.lower() in lines_small:
-            errors += 1
-        else:
-            uppers = 0
-            for char in word:
-                if ord('A') <= ord(char) <= ord('Z'):
-                    uppers += 1
+total_errors = 0
 
-            if uppers != 1:
-                errors += 1
 
-print(errors)
+def counter(s):
+    return sum(map(str.isupper, s))
+
+
+sentence = input().split()
+for word in sentence:
+    low = word.lower()
+    if low in accents and word not in accents[low]:
+        total_errors = total_errors + 1
+    elif counter(word) != 1:
+        total_errors = total_errors + 1
+print(total_errors)

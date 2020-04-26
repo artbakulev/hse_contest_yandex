@@ -1,27 +1,23 @@
 n = int(input())
-dictionary = {input() for i in range(n)}
-small_dictionary = set()
+udar = {}
+for i in range(n):
+    word = input()
+    base_form = word.lower()
+    if base_form not in udar:
+        udar[base_form] = set()
+    udar[base_form].add(word)
 
-for word in dictionary:
-    small_dictionary.add(word.lower())
+counter = 0
 
-s = input()
-words = s.split(' ')
-errors = 0
-for word in words:
-    if word in dictionary:
-        continue
 
-    if word.lower() in small_dictionary:
-        errors += 1
-        continue
+def count_big(s):
+    return sum(map(str.isupper, s))
 
-    uppers = 0
-    for char in word:
-        if char.isupper():
-            uppers += 1
 
-    if uppers == 0 or uppers > 1:
-        errors += 1
-
-print(errors)
+sentence = input().split()
+for word in sentence:
+    base_form = word.lower()
+    if (base_form in udar and word not in udar[base_form]
+            or count_big(word) != 1):
+        counter += 1
+print(counter)
