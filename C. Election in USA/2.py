@@ -1,20 +1,13 @@
-f = open('input.txt')
-results = f.readlines()
-f.close()
-# n = int(input())
+with open('input.txt') as f:
+    lines, results = f.readlines(), {}
 
+for line in lines:
+    person, votes = line.strip().split(' ')
+    if results.get(person) is not None:
+        results[person] += int(votes)
+    else:
+        results[person] = int(votes)
 
-people, votes = [], []
+results = sorted(list(results.items()), key=lambda x: x[0])
 for result in results:
-    result = result.strip().split(' ')
-    person, vote = result[0], int(result[1])
-    try:
-        idx = people.index(person)
-        votes[idx] += vote
-    except ValueError:
-        people.append(person)
-        votes.append(vote)
-
-results = sorted(zip(people, votes), key=lambda x: x[0])
-for result in results:
-    print(result[0] + ' ' + str(result[1]))
+    print("{} {}".format(result[0], result[1]))
