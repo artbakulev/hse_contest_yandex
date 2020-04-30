@@ -1,5 +1,5 @@
-kms = map(int, input().split(' '))
-prices = map(int, input().split(' '))
+kms = map(int, input().strip().split(' '))
+prices = map(int, input().strip().split(' '))
 
 kms = sorted(kms)
 prices = sorted(prices, reverse=True)
