@@ -1,5 +1,5 @@
-distances = map(int, input().split(' '))
-prices = map(int, input().split(' '))
+distances = map(int, input().strip().split(' '))
+prices = map(int, input().strip().split(' '))
 total_price = 0
 for distance, price in zip(sorted(distances), sorted(prices, reverse=True)):
     total_price += distance * price

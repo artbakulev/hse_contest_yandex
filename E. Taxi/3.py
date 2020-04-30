@@ -1,5 +1,5 @@
-distances, prices = list(map(int, input().split(' '))), \
-                    list(map(int, input().split(' ')))
+distances, prices = list(map(int, input().strip().split(' '))), \
+                    list(map(int, input().strip().split(' ')))
 distances.sort()
 prices.sort()
 prices.reverse()
